@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+    line-height: normal;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    line-height: normal;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-size: small;
+    line-height: normal;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+}
+
+/* header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;    
+
+} */
+@media(min-width:992px) {
+    .titulo {
+        font-size: 3rem;
+    }
+
+    .navbar-nav {
+        font-size: 1.3rem;
+    }
+}
+
+.tarjeta {
+    width: 200px;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+    border-radius: 6px;
+    margin: 30px;
+    padding-bottom: 10px;
+
+}
+
+/* .tarjeta:hover {
+    box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+.tarjeta:active {
+   
+    transform: scale(3);
+} */
+
+@media(min-width:576px) {
+    .tarjeta {
+        width: 250px;
+    }
+
+}
+
+
+h2 {
+    font-size: 1rem;
+    font-weight: 700;
+
+
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: grey;
+}
+
+i {
+    font-size: 1.5rem;
+}
+
+.logo {
+    max-width: 300px;
+}
+
+.precio {
+    padding: 5px;
+}
+
+.unidades {
+   overflow: hidden;
+    padding: 5px;
+
+
+
+}
+
+.cantidad {
+    width: 50px;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid black  2px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.cantIcon {
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.cantIcon2 {
+    width: 40px;
+    height: 40px;
+    border: none;
+}
