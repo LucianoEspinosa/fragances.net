@@ -95,8 +95,23 @@ body {
     }
 
 }
+.itemCarrito {
+    width: 700px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+    border-radius: 6px;
+    margin: 30px;
+    padding-bottom: 10px;
 
-
+}
+.imgCarrito{
+    width: 70px;
+    
+}
+.agregarQuitar{
+    height: 70px;
+}
 h2 {
     font-size: 1rem;
     font-weight: 700;
