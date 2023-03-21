@@ -1,16 +1,12 @@
 class fragancia {
-    constructor(codigo,marca, nombre, img, presentacion, precio) {
+    constructor(codigo,marca, nombre, img, presentacion,precio) {
         this.codigo = codigo;
         this.marca = marca;
         this.nombre = nombre;
         this.img = img;
         this.presentacion = presentacion;
         this.precio = precio;
-    }
-
-    cambiarPresentacion(nuevaPresentacion,nuevoPrecio){
-        this.presentacion = nuevaPresentacion;
-        this.precio=nuevoPrecio;
+        this.cantidad=0;
     }
 }
 const producto0 = new fragancia("0","Dior","Homme Intense","dior homme intense","100ml",45000);
