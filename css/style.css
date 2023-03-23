@@ -69,7 +69,9 @@ body {
         font-size: 1.3rem;
     }
 }
-
+.fondo{
+    background-color: rgb(238, 238, 238);
+}
 .tarjeta {
     width: 200px;
     overflow: hidden;
@@ -77,6 +79,7 @@ body {
     border-radius: 6px;
     margin: 30px;
     padding-bottom: 10px;
+    background-color: white;
 
 }
 
@@ -101,8 +104,11 @@ body {
     overflow: hidden;
     box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
     border-radius: 6px;
-    margin: 30px;
+    margin: 8px;
     padding-bottom: 10px;
+    background-color: white;
+    transition-duration: 1s;
+    
 
 }
 .imgCarrito{
@@ -170,4 +176,38 @@ span{
     width: 40px;
     height: 40px;
     border: none;
+}
+.tituloIndex{
+    font-size: 3rem;
+    text-align: center;
+    padding: 15px;
+}
+.TituloCarritoDesplegable{
+    color: white;
+    font-size: 1.2rem;
+}
+.finalizarCompra{
+    color: black;
+    padding: 10px;
+    font-size: 1.2rem;
+    }
+.tableImg{
+    width: 30px;
+    
+}
+.vaciarCarrito{
+    font-size: 1rem;
+    color: black;
+}
+.tablaCarrito{
+    width: 700px;
+    
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+    border-radius: 6px;
+    margin: 8px;
+    padding-bottom: 10px;
+    background-color: white;
+    opacity: 0.7;
+    transition-duration: 1s;
 }

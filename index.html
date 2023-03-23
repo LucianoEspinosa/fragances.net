@@ -18,26 +18,26 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-dark bg-black">
-            <div class="container align-items-md-baseline">
-                <a class="navbar-brand titulo" href="index.html">Fragances.net</a>
-                <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="bi bi-cart4"></span>
-                </div>
-                <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="dropdown-item"><a href="./pages/carrito.html">Finalizar Compra</a></li>
-                        
-                    </ul>
-                </div>
+    <nav class="navbar fixed-top navbar-dark bg-opacity-50">
+        <div class="container align-items-md-baseline">
+            <a class="navbar-brand titulo" href="index.html">
+                <h1>Fragances.net</h1>
+            </a>
+            <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-cart4 text-black"></i>
             </div>
-        </nav>
-    </header>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <li class="d-flex justify-content-end" ><table id="carritoDropDown" class="d-flexjustify-content-end table table-hover bg-light tablaCarrito"></table></li>
+                <li class="d-flex justify-content-end" ><table id="carritoDropDown2" class="d-flexjustify-content-end table table-hover bg-light tablaCarrito"></table></li>
+            </div>
+        </div>
+    </nav>
+</header>
 
 
 
-    <main>
+    <main class="fondo">
         <!-- --------carrouser-------- -->
         <section>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -64,8 +64,9 @@
         </section>
         <!-- -------seccion principal------- -->
         <section class="container ">
+            <h2 class="tituloIndex">Nuestras Fragancias</h2>
             <div id="verProductos" class="row justify-content-evenly"></div>
-            <div id="itemCompra" class="row justify-content-evenly"></div>
+            <div id="itemCompra" class="row justify-content-evenly "></div>
         </section>
 
     </main>
