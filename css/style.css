@@ -53,13 +53,7 @@ body {
     font-family: 'League Spartan', sans-serif;
 }
 
-/* header{
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;    
 
-} */
 @media(min-width:992px) {
     .titulo {
         font-size: 3rem;
@@ -72,6 +66,7 @@ body {
 
 .fondo {
     background-color: rgb(238, 238, 238);
+    padding-top: 60px;
 }
 
 .tarjeta {
@@ -82,7 +77,6 @@ body {
     margin: 30px;
     padding-bottom: 10px;
     background-color: white;
-
 }
 
 @media(min-width:576px) {
@@ -90,6 +84,23 @@ body {
         width: 250px;
     }
 
+}
+
+.headerLogo {
+    width: 70px;
+    padding-top: 6px;
+}
+
+.changuito {
+    background-color: #F2C2B8;
+    border-radius: 50%;
+    display: inline-block;
+    color: black;
+    width: 21px;
+    height: 21px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 4px;
 }
 
 .itemCarrito {
@@ -151,8 +162,6 @@ h1 {
 h2 {
     font-size: 1rem;
     font-weight: 700;
-
-
 }
 
 h3 {
@@ -180,9 +189,6 @@ span {
 .unidades {
     overflow: hidden;
     padding: 5px;
-
-
-
 }
 
 .alto {
@@ -203,11 +209,18 @@ span {
 }
 
 .tituloIndex {
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     padding: 15px;
 }
-.sinBorde{
+
+@media(min-width:576px) {
+    .tituloIndex {
+        font-size: 3rem;
+    }
+}
+
+.sinBorde {
     font-size: 2rem;
     border: none;
 }
@@ -249,10 +262,12 @@ span {
 .selector {
     width: 150px;
 }
-.mostrarCarrito{
+
+.mostrarCarrito {
     margin-top: 65px;
 }
-.btnFinalizarCompra{
+
+.btnFinalizarCompra {
     background-color: pink;
     padding: 8px;
     border-radius: 6px;
@@ -264,7 +279,22 @@ span {
     color: black;
     font-size: 1.1rem;
 }
-.btnFinalizarCompra :hover  {
+
+.btnFinalizarCompra :hover {
     color: white;
     background-color: blue;
+}
+
+.mTitulo {
+    width: 50%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.mImagen {
+    width: 25%;
+}
+
+.mX {
+    width: 25%;
 }

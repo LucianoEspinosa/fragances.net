@@ -16,18 +16,21 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar  navbar-dark bg-black fixed-top">
-            <div class="container align-items-md-baseline">
-                <a class="navbar-brand titulo" href="index.html">
-                    <h1>Fragance.net</h1>
-                </a>
+    <header class="fixed-top">
+        <nav class="navbar  navbar-dark bg-black">
+            <div class="container align-items-center">
+
+                <div class="d-flex align-items-center"><img src="./img/fragances.net.png" class="headerLogo" alt="logo">
+                    <a class="navbar-brand titulo justify-self-start" href="index.html">
+                        <h1>Fragance.net</h1>
+                    </a>
+                </div>
                 <div class="navbar-toggler sinBorde " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <div>
                         <i class="bi bi-cart4 sinBorde "></i>
-                        <span class="text-white" id="changuito"></span>
+                        <span id="changuito"></span>
                     </div>
                 </div>
             </div>
@@ -40,8 +43,6 @@
             </div>
         </div>
     </header>
-
-
 
     <main class="fondo">
         <!-- --------carrouser-------- -->
@@ -101,9 +102,9 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="./img/fragances.net.png" class="img-fluid w-25" alt="">
-                        <span class="modal-title fs-5" id="exampleModalLabel">Gracias por su compra</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <img src="./img/fragances.net.png" class="img-fluid w-25 mImagen" alt="">
+                        <span class="modal-title mTitulo" id="exampleModalLabel">Resumen de su compra</span>
+                        <button type="button" class="btn-close mX" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped table-sm text-center m-2 table align-middle">
@@ -116,17 +117,16 @@
                                     <th scope="col">Precio</th>
                                 </tr>
                             </thead>
-                            <tbody id="tablaCarrito">
-
-                            </tbody>
+                            <tbody id="tablaCarrito"></tbody>
                             <tfoot>
                                 <th colspan="4" style="text-align: end;">Total</th>
                                 <th id="tablaTotal"></th>
                             </tfoot>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer justify-content-between">
+                        <span>Gracias por elegirnos</span>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ mostrarProductos();
 filtroPorMarca.addEventListener('change', () => {
     //arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : fragancias; 
     if (filtroPorMarca.value) {
-        arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value)
+        arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value);
     } else {
         arrayFiltro = [...fragancias];
     }
@@ -40,8 +40,6 @@ function mostrarProductos() {
         </div>
 `
     }
-
-
 }
 
 
@@ -92,16 +90,15 @@ function eliminarProductosDeCarrito(codigoPerfume) {
             break;
         }
     }
-    cantidadDeProductos()
+
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
+    cantidadDeProductos()
     mostrarCarrito();
 }
 function restarUnidades(codigoPerfume) {
-    console.log(codigoPerfume);
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     for (let i = 0; i < carrito.length; i++) {
         if (carrito[i].codigo == codigoPerfume) {
-            console.log(carrito[i].codigo);
             carrito[i].cantidad = carrito[i].cantidad - 1;
             if (carrito[i].cantidad < 1) {
                 carrito.splice(i, 1);
@@ -109,8 +106,9 @@ function restarUnidades(codigoPerfume) {
             break;
         }
     }
-    cantidadDeProductos()
+
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
+    cantidadDeProductos()
     mostrarCarrito();
 }
 function mostrarCarrito() {
@@ -140,11 +138,19 @@ function mostrarCarrito() {
             class="bi bi-trash3-fill"></i>
     </div>`
         MontoTotal();
-        cantidadDeProductos()
+        cantidadDeProductos();
 
     }
-    let precio = localStorage.getItem("precioTotal")
-    let cantidad = localStorage.getItem("cantidadProductos")
+    let precio = localStorage.getItem("precioTotal");
+    let cantidad = localStorage.getItem("cantidadProductos");
+    let mostrarCantidad = document.getElementById("changuito");
+    if (cantidad > 0) {
+        mostrarCantidad.innerText = cantidad;
+        mostrarCantidad.className = ("changuito");
+    } else {
+        mostrarCantidad.innerText = "";
+        mostrarCantidad.classList.remove("changuito")
+    }
     if (itemDecompra.innerHTML != "") {
         itemDecompra.innerHTML += `
     <div class="d-flex itemCarrito justify-content-evenly align-items-center">
@@ -172,29 +178,29 @@ function MontoTotal() {
 }
 
 function cantidadDeProductos() {
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     let cantidad = carrito.reduce((cantidad, item) => cantidad + item.cantidad, 0);
     localStorage.setItem("cantidadProductos", (cantidad));
 }
-function finalizarCompra(){
+function finalizarCompra() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     let tb = document.querySelector('#tablaCarrito');
-    
-    tb.innerHTML= ""
+
+    tb.innerHTML = ""
     for (let item of carrito) {
-        
+
         tb.innerHTML += `
     <tr>
     <td scope="row">${item.marca}</td>
     <td >${item.nombre}</td>
     <td >${item.presentacion}</td>
     <td >${item.cantidad}</td>
-    <td >$${item.cantidad* item.precio}</td>
+    <td >$${item.cantidad * item.precio}</td>
     </tr>`
     }
-    let total=localStorage.getItem("precioTotal")
-    let suma=document.querySelector("#tablaTotal");
-    suma.innerHTML="$" + total;
+    let total = localStorage.getItem("precioTotal")
+    let suma = document.querySelector("#tablaTotal");
+    suma.innerHTML = "$" + total;
 
-    
+
 }
