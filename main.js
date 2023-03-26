@@ -160,7 +160,7 @@ function mostrarCarrito() {
         <i  onclick="vaciarCarrito()"
             class="bi bi-trash3-fill"></i>
     </div>
-    <span class="text-end d-block text-white"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button></span>
+    <span class="text-end d-block text-white"><button onclick="finalizarCompra()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button></span>
     `
     }
 }
@@ -175,4 +175,26 @@ function cantidadDeProductos() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     let cantidad = carrito.reduce((cantidad, item) => cantidad + item.cantidad, 0);
     localStorage.setItem("cantidadProductos", (cantidad));
+}
+function finalizarCompra(){
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let tb = document.querySelector('#tablaCarrito');
+    
+    tb.innerHTML= ""
+    for (let item of carrito) {
+        
+        tb.innerHTML += `
+    <tr>
+    <td scope="row">${item.marca}</td>
+    <td >${item.nombre}</td>
+    <td >${item.presentacion}</td>
+    <td >${item.cantidad}</td>
+    <td >$${item.cantidad* item.precio}</td>
+    </tr>`
+    }
+    let total=localStorage.getItem("precioTotal")
+    let suma=document.querySelector("#tablaTotal");
+    suma.innerHTML="$" + total;
+
+    
 }
