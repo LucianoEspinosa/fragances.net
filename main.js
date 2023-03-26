@@ -5,7 +5,6 @@ mostrarCarrito();
 mostrarProductos();
 
 filtroPorMarca.addEventListener('change', () => {
-    //arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : fragancias; 
     if (filtroPorMarca.value) {
         arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value);
     } else {
@@ -15,11 +14,10 @@ filtroPorMarca.addEventListener('change', () => {
 });
 
 function mostrarProductos() {
-
     let tarjetas = document.getElementById("verProductos");
     tarjetas.innerHTML = "";
     for (let item of arrayFiltro) {
-        let bontonComprar = item.codigo.concat("btnComprar");
+        let botonComprar = item.codigo.concat("btnComprar");
         let idH4 = ("precio" + item.nombre + item.presentacion).replace(' ', '');
 
         tarjetas.innerHTML += `
@@ -30,21 +28,22 @@ function mostrarProductos() {
             <h2 class="card-title">${item.marca}</h2>
             <h3 class="card-text">${item.nombre}</h3>
             
-            <div class="btn-group-sm p-1" role="group" aria-label="Basic example">
-                <span type="button" class="btn btn-primary">${item.presentacion}</span>
+            <div class="estiloPresentacion d-flex justify-content-center align-items-center">
+                <span>${item.presentacion}</span>
             </div>
             <h4 id="${idH4}" class="classPrecio">$${item.precio}</h4>
-            <button id="${bontonComprar}" type="button" onclick="agregarAlCarrito(${item.codigo})"
-                        class="bontonComprar btn btn-primary border-0">Comprar</button>
-        
-        </div>
-`
+            <button id="${botonComprar}" type="button" onclick="agregarAlCarrito(${item.codigo})" class="bontonComprar btn btn-primary border-0">Comprar</button>
+            `
     }
 }
-
-
 function agregarAlCarrito(codigoPerfume) {
-    // console.log(codigoPerfume);
+    swal({
+        title: "Gracias",
+        text: "El Producto fue agregado al carrito!",
+        icon: "success",
+        button: "Seguir comprando",
+    });
+
     let existe = false;
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     for (let item of fragancias) {
@@ -170,13 +169,11 @@ function mostrarCarrito() {
     `
     }
 }
-
 function MontoTotal() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     let precio = carrito.reduce((total, i) => total + i.precio * i.cantidad, 0);
     localStorage.setItem("precioTotal", (precio));
 }
-
 function cantidadDeProductos() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     let cantidad = carrito.reduce((cantidad, item) => cantidad + item.cantidad, 0);
@@ -201,6 +198,6 @@ function finalizarCompra() {
     let total = localStorage.getItem("precioTotal")
     let suma = document.querySelector("#tablaTotal");
     suma.innerHTML = "$" + total;
-
+    vaciarCarrito();
 
 }

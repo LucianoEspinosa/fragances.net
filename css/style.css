@@ -90,7 +90,14 @@ body {
     width: 70px;
     padding-top: 6px;
 }
-
+.estiloPresentacion{
+    background-color: rgb(238, 238, 238);
+    border-radius: 50%;
+    display: flex;
+    width: 48px;
+    height: 48px;
+    color: black;
+    }
 .changuito {
     background-color: #F2C2B8;
     border-radius: 50%;
