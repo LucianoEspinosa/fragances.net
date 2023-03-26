@@ -1,23 +1,25 @@
-let arrayFiltro = [...fragancias];
+// filtros
+let arrayFiltro = [...fragancias]
+
+mostrarCarrito()
+mostrarProductos()
+
 const filtroPorMarca = document.getElementById('filtroMarca');
-
-mostrarCarrito();
-mostrarProductos();
-
 filtroPorMarca.addEventListener('change', () => {
     //arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : fragancias; 
-    if (filtroPorMarca.value) {
-        arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value)
-    } else {
-        arrayFiltro = [...fragancias];
+    
+    if(filtroPorMarca.value){
+        arrayFiltro =fragancias.filter(p => p.marca === filtroPorMarca.value)
+    }else{
+        arrayFiltro =[...fragancias]
     }
-    mostrarProductos();
-});
+   mostrarProductos()
+})
 
 function mostrarProductos() {
 
     let tarjetas = document.getElementById("verProductos");
-    tarjetas.innerHTML = "";
+    tarjetas.innerHTML ="";
     for (let item of arrayFiltro) {
         let bontonComprar = item.codigo.concat("btnComprar");
         let idH4 = ("precio" + item.nombre + item.presentacion).replace(' ', '');
@@ -43,7 +45,6 @@ function mostrarProductos() {
 
 
 }
-
 
 function agregarAlCarrito(codigoPerfume) {
     // console.log(codigoPerfume);
@@ -78,7 +79,6 @@ function vaciarCarrito() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     carrito = [];
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
-    cantidadDeProductos()
     mostrarCarrito();
 }
 function eliminarProductosDeCarrito(codigoPerfume) {
@@ -92,7 +92,6 @@ function eliminarProductosDeCarrito(codigoPerfume) {
             break;
         }
     }
-    cantidadDeProductos()
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
     mostrarCarrito();
 }
@@ -104,12 +103,14 @@ function restarUnidades(codigoPerfume) {
             console.log(carrito[i].codigo);
             carrito[i].cantidad = carrito[i].cantidad - 1;
             if (carrito[i].cantidad < 1) {
+                console.log("aguante luchito");
                 carrito.splice(i, 1);
+                // eliminarProductosDeCarrito(codigoPerfume);
             }
+
             break;
         }
     }
-    cantidadDeProductos()
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
     mostrarCarrito();
 }
@@ -139,9 +140,7 @@ function mostrarCarrito() {
         <i id="eliminar${item.codigo}" onclick="eliminarProductosDeCarrito(${item.codigo})"
             class="bi bi-trash3-fill"></i>
     </div>`
-        MontoTotal();
-        cantidadDeProductos()
-
+        MontoTotal()
     }
     let precio = localStorage.getItem("precioTotal")
     let cantidad = localStorage.getItem("cantidadProductos")
@@ -160,19 +159,21 @@ function mostrarCarrito() {
         <i  onclick="vaciarCarrito()"
             class="bi bi-trash3-fill"></i>
     </div>
-    <span class="text-end d-block text-white"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button></span>
+    <span class="text-end d-block text-white"><a class="btn btn-primary">Finalizar compra</a></span>
     `
+
     }
 }
 
 function MontoTotal() {
+
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     let precio = carrito.reduce((total, i) => total + i.precio * i.cantidad, 0);
-    localStorage.setItem("precioTotal", (precio));
-}
-
-function cantidadDeProductos() {
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     let cantidad = carrito.reduce((cantidad, item) => cantidad + item.cantidad, 0);
+
+
+    console.log(cantidad);
     localStorage.setItem("cantidadProductos", (cantidad));
+    localStorage.setItem("precioTotal", (precio));
+
 }

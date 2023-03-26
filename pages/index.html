@@ -16,28 +16,33 @@
 </head>
 
 <body>
+
     <header>
         <nav class="navbar  navbar-dark bg-black fixed-top">
             <div class="container align-items-md-baseline">
+
                 <a class="navbar-brand titulo" href="index.html">
                     <h1>Fragance.net</h1>
                 </a>
+
                 <div class="navbar-toggler sinBorde " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <div>
-                        <i class="bi bi-cart4 sinBorde "></i>
-                        <span class="text-white" id="changuito"></span>
-                    </div>
+                    <i class="bi bi-cart4 sinBorde "></i>
                 </div>
+
             </div>
         </nav>
+
         <div class="collapse navbar-collapse bg-opacity-100 fixed-top mostrarCarrito" id="navbarNavDropdown">
             <div class="container d-flex justify-content-end">
                 <div id="itemCompra">
                     <div id="muestraTotal "></div>
                 </div>
+
+
             </div>
+
         </div>
     </header>
 
@@ -77,42 +82,25 @@
                 <select id="filtroMarca" class="form-select selector" aria-label="Default select example">
                     <option value="" selected>Todos</option>
                     <option value="Armaf">Armaf</option>
-                    <option value="Armani">Armani</option>
-                    <option value="Calvin klein">Calvin klein</option>
-                    <option value="Carolina Herrera">Carolina Herrera</option>
                     <option value="Dior">Dior</option>
-                    <option value="Dolce & Gabbana">Dolce & Gabbana</option>
-                    <option value="Givenchy">Givenchy</option>
-                    <option value="Jean Paul Gaultier">Jean Paul Gaultier</option>
-                    <option value="Montblanc">Montblanc</option>
-                    <option value="Moschino">Moschino</option>
-                    <option value="Paco Rabanne">Paco Rabbane</option>
-                    <option value="Ralph Lauren">Ralph Lauren</option>
-                    <option value="Yves Saint Laurent">Yves Saint Laurent</option>
+                    <option value="3">Three</option>
+                </select>
+                <span>Presentacion:</span>
+                <select id="filtroPresentacion" class="form-select selector" aria-label="Default select example">
+                    <option selected>Todas</option>
+                    <option value="50ml">50ml</option>
+                    <option value="100ml">100ml</option>
+
                 </select>
             </div>
         </section>
+        <!-- ------desplegables------- -->
+
+        <!---------fin desplegables--- -->
         <section class="container">
             <div id="verProductos" class="row justify-content-evenly"></div>
             <div id="itemCompra" class="row justify-content-evenly "></div>
         </section>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <img src="./img/fragances.net.png" class="img-fluid w-25" alt="">
-                        <span class="modal-title fs-5" id="exampleModalLabel">Gracias por su compra</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                </div>
-            </div>
-        </div>
-
 
 
     </main>
