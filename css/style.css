@@ -67,6 +67,7 @@ body {
 .fondo {
     background-color: rgb(238, 238, 238);
     padding-top: 60px;
+    min-height: 710px;
 }
 
 .tarjeta {
@@ -305,3 +306,17 @@ span {
 .mX {
     width: 25%;
 }
+.swal-button {
+    background-color:#0d6efd;
+    outline: none;
+    font-size: 1rem;
+    padding: 16px,12px;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+}
+
+.swal-button:hover{
+    background-color:#0b5ed7 !important ;
+}
+
+

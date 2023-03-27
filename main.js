@@ -32,11 +32,20 @@ function mostrarProductos() {
                 <span>${item.presentacion}</span>
             </div>
             <h4 id="${idH4}" class="classPrecio">$${item.precio}</h4>
-            <button id="${botonComprar}" type="button" onclick="agregarAlCarrito(${item.codigo})" class="bontonComprar btn btn-primary border-0">Comprar</button>
+            <button id="${botonComprar}" type="button" onclick="agregarAlCarrito(${item.codigo},true)" class="bontonComprar btn btn-primary border-0">Comprar</button>
             `
     }
 }
-function agregarAlCarrito(codigoPerfume) {
+function agregarAlCarrito(codigoPerfume, popUp) {
+    if (popUp) {
+        swal({
+            title: "Felicitaciones!",
+            text: "El Producto fue agregado al carrito.",
+            icon: "success",
+            button: "Seguir comprando",
+        });
+
+    }
     let existe = false;
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     for (let item of fragancias) {
@@ -54,12 +63,6 @@ function agregarAlCarrito(codigoPerfume) {
                 });
                 carrito = productos.slice();
             } else {
-                swal({
-                    title: "Felicitaciones!",
-                    text: "El Producto fue agregado al carrito.",
-                    icon: "success",
-                    button: "Seguir comprando",
-                });
                 item.cantidad = 1;
                 carrito.push(item);
             }
