@@ -38,8 +38,11 @@ h6 {
     margin-bottom: 0;
     font-weight: 600;
     line-height: normal;
+    cursor: default;
 }
-
+span{
+    cursor: default;
+}
 button,
 input,
 optgroup,
@@ -143,7 +146,9 @@ body {
 .itemCarrito_unidades {
     width: 90px;
 }
-
+.icon{
+    cursor: pointer;
+}
 .itemCarrito_cantidad {
     width: 50px;
     border-top: none;
@@ -152,6 +157,7 @@ body {
     border-bottom: solid black 2px;
     text-align: center;
     font-size: 1rem;
+    cursor:default;
 }
 
 .imgCarrito {

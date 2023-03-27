@@ -129,14 +129,14 @@ function mostrarCarrito() {
             <span class="text-center">${item.nombre} ${item.presentacion}</span>
         </div>
         <div class="itemCarrito_unidades d-flex">
-            <i class="bi bi-cart-dash-fill " id="restar${item.codigo}" onclick="restarUnidades(${item.codigo})"></i>
+            <i class="bi bi-cart-dash-fill icon" id="restar${item.codigo}" onclick="restarUnidades(${item.codigo})"></i>
             <input id="cantidad${item.codigo}" type="text" class="itemCarrito_cantidad" value="${item.cantidad}">
-            <i class="bi bi-cart-plus-fill " id="sumar${item.codigo}" onclick="agregarAlCarrito(${item.codigo})"></i>
+            <i class="bi bi-cart-plus-fill icon" id="sumar${item.codigo}" onclick="agregarAlCarrito(${item.codigo})"></i>
         </div>
 
         <span class="itemCarrito_precio">$${item.precio * item.cantidad}</span>
         <i id="eliminar${item.codigo}" onclick="eliminarProductosDeCarrito(${item.codigo})"
-            class="bi bi-trash3-fill"></i>
+            class="bi bi-trash3-fill icon"></i>
     </div>`
         MontoTotal();
         cantidadDeProductos();
@@ -165,7 +165,7 @@ function mostrarCarrito() {
 
         <span class="itemCarrito_precio">$${precio}</span>
         <i  onclick="vaciarCarrito()"
-            class="bi bi-trash3-fill"></i>
+            class="bi bi-trash3-fill icon"></i>
     </div>
     <span class="text-end d-block text-white"><button onclick="finalizarCompra()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button></span>
     `
