@@ -37,13 +37,6 @@ function mostrarProductos() {
     }
 }
 function agregarAlCarrito(codigoPerfume) {
-    swal({
-        title: "Gracias",
-        text: "El Producto fue agregado al carrito!",
-        icon: "success",
-        button: "Seguir comprando",
-    });
-
     let existe = false;
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     for (let item of fragancias) {
@@ -61,6 +54,12 @@ function agregarAlCarrito(codigoPerfume) {
                 });
                 carrito = productos.slice();
             } else {
+                swal({
+                    title: "Felicitaciones!",
+                    text: "El Producto fue agregado al carrito.",
+                    icon: "success",
+                    button: "Seguir comprando",
+                });
                 item.cantidad = 1;
                 carrito.push(item);
             }
@@ -181,7 +180,7 @@ function cantidadDeProductos() {
 }
 function finalizarCompra() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
-    let tb = document.querySelector('#tablaCarrito');
+    let tb = document.getElementById('tablaCarrito');
 
     tb.innerHTML = ""
     for (let item of carrito) {
@@ -196,7 +195,7 @@ function finalizarCompra() {
     </tr>`
     }
     let total = localStorage.getItem("precioTotal")
-    let suma = document.querySelector("#tablaTotal");
+    let suma = document.getElementById("tablaTotal");
     suma.innerHTML = "$" + total;
     vaciarCarrito();
 
