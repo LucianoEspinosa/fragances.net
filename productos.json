@@ -29,8 +29,8 @@
     {
         "codigo": "3",
         "marca": "Carolina Herrera",
-        "nombre": "212 vip.jpg",
-        "img": "212vip",
+        "nombre": "212 vip",
+        "img": "212vip.jpg",
         "presentacion": "50ml",
         "precio": 30000,
         "cantidad": 0
@@ -299,8 +299,8 @@
     {
         "codigo": "33",
         "marca": "Moschino",
-        "nombre": "Toy Boy.jpg",
-        "img": "toyboy",
+        "nombre": "Toy Boy",
+        "img": "toyboy.jpg",
         "presentacion": "100ml",
         "precio": 49000,
         "cantidad": 0
@@ -317,8 +317,8 @@
     {
         "codigo": "35",
         "marca": "Yves Saint Laurent",
-        "nombre": "Y Edp.jpg",
-        "img": "yedp",
+        "nombre": "Y Edp",
+        "img": "yedp.jpg",
         "presentacion": "100ml",
         "precio": 48000,
         "cantidad": 0

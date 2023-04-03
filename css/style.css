@@ -80,6 +80,7 @@ body {
         min-height: 1000px;
     }
 }
+
 .tarjeta {
     width: 200px;
     overflow: hidden;
@@ -291,7 +292,23 @@ span {
 }
 
 .selector {
-    width: 150px;
+    width: 113px;
+}
+
+.ordenarContain {
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media(min-width:576px) {
+    .selector {
+        width: 150px;
+    }
+
+    .ordenarContain {
+        margin-left: auto;
+    }
 }
 
 .mostrarCarrito {
@@ -356,11 +373,4 @@ span {
 .borrarFiltros {
     text-decoration: underline;
     cursor: pointer;
-}
-
-.ordenarContain {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    width: 90%;
 }
