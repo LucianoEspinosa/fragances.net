@@ -1,0 +1,362 @@
+[
+    {
+        "codigo": "0",
+        "marca": "Dior",
+        "nombre": "Homme Intense",
+        "img": "dior homme intense.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "1",
+        "marca": "Dior",
+        "nombre": "Homme Intense",
+        "img": "dior homme intense.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "2",
+        "marca": "Carolina Herrera",
+        "nombre": "212 vip",
+        "img": "212vip.jpg",
+        "presentacion": "100ml",
+        "precio": 40000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "3",
+        "marca": "Carolina Herrera",
+        "nombre": "212 vip.jpg",
+        "img": "212vip",
+        "presentacion": "50ml",
+        "precio": 30000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "4",
+        "marca": "Armaf",
+        "nombre": "Club de Nuit Intese",
+        "img": "armaf.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "5",
+        "marca": "Paco Rabanne",
+        "nombre": "Black Xs",
+        "img": "blackxs.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "6",
+        "marca": "Paco Rabanne",
+        "nombre": "Black Xs",
+        "img": "blackxs.jpg",
+        "presentacion": "100ml",
+        "precio": 42000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "7",
+        "marca": "Calvin klein",
+        "nombre": "One",
+        "img": "ckone.jpg",
+        "presentacion": "50ml",
+        "precio": 30000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "8",
+        "marca": "Calvin klein",
+        "nombre": "One",
+        "img": "ckone.jpg",
+        "presentacion": "100ml",
+        "precio": 40000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "9",
+        "marca": "Dior",
+        "nombre": "Homme Cologne",
+        "img": "cologne.jpg",
+        "presentacion": "50ml",
+        "precio": 32000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "10",
+        "marca": "Dior",
+        "nombre": "Homme Cologne",
+        "img": "cologne.jpg",
+        "presentacion": "100ml",
+        "precio": 43000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "11",
+        "marca": "Givenchy",
+        "nombre": "Gentleman Edp",
+        "img": "gentlemanedp.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "12",
+        "marca": "Givenchy",
+        "nombre": "Gentleman Edp",
+        "img": "gentlemanedp.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "13",
+        "marca": "Givenchy",
+        "nombre": "gentleman Edt Intense",
+        "img": "gentlemanintense.jpg",
+        "presentacion": "50ml",
+        "precio": 30000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "14",
+        "marca": "Givenchy",
+        "nombre": "gentleman Edt Intense",
+        "img": "gentlemanintense.jpg",
+        "presentacion": "100ml",
+        "precio": 40000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "15",
+        "marca": "Tommy Hilfiger",
+        "nombre": "Impact",
+        "img": "impact.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "16",
+        "marca": "Tommy Hilfiger",
+        "nombre": "Impact",
+        "img": "impact.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "17",
+        "marca": "Paco Rabanne",
+        "nombre": "Invictus",
+        "img": "invictus.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "18",
+        "marca": "Paco Rabanne",
+        "nombre": "Invictus",
+        "img": "invictus.jpg",
+        "presentacion": "100ml",
+        "precio": 44000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "19",
+        "marca": "Paco Rabanne",
+        "nombre": "One Millon Parfum",
+        "img": "onemillonparfum.jpg",
+        "presentacion": "50ml",
+        "precio": 37000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "20",
+        "marca": "Paco Rabanne",
+        "nombre": "One Millon Parfum",
+        "img": "onemillonparfum.jpg",
+        "presentacion": "100ml",
+        "precio": 49000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "21",
+        "marca": "Jean Paul Gaultier",
+        "nombre": "Le Beau Intense",
+        "img": "lebeau.jpg",
+        "presentacion": "75ml",
+        "precio": 35000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "22",
+        "marca": "Jean Paul Gaultier",
+        "nombre": "Le Beau Intense",
+        "img": "lebeau.jpg",
+        "presentacion": "125ml",
+        "precio": 47000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "23",
+        "marca": "Armani",
+        "nombre": "Aqcua di Gio Profumo",
+        "img": "profumo.jpg",
+        "presentacion": "75ml",
+        "precio": 37000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "24",
+        "marca": "Armani",
+        "nombre": "Aqcua di Gio Profumo",
+        "img": "profumo.jpg",
+        "presentacion": "125ml",
+        "precio": 50000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "25",
+        "marca": "Montblanc",
+        "nombre": "Starwalker",
+        "img": "starwalker.jpg",
+        "presentacion": "75ml",
+        "precio": 30000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "26",
+        "marca": "Dior",
+        "nombre": "Sauvage Edp",
+        "img": "sauvageedp.jpg",
+        "presentacion": "50ml",
+        "precio": 32000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "27",
+        "marca": "Dior",
+        "nombre": "Sauvage Edp",
+        "img": "sauvageedp.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "28",
+        "marca": "Jean Paul Gaultier",
+        "nombre": "Scandal Pour Homme",
+        "img": "scandal.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "29",
+        "marca": "Jean Paul Gaultier",
+        "nombre": "Scandal Pour Homme",
+        "img": "scandal.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "30",
+        "marca": "Dolce & Gabbana",
+        "nombre": "Light Blue Foreve",
+        "img": "forever.jpg",
+        "presentacion": "50ml",
+        "precio": 32000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "31",
+        "marca": "Dolce & Gabbana",
+        "nombre": "Light Blue Foreve",
+        "img": "forever.jpg",
+        "presentacion": "100ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "32",
+        "marca": "Moschino",
+        "nombre": "Toy Boy",
+        "img": "toyboy.jpg",
+        "presentacion": "50ml",
+        "precio": 33000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "33",
+        "marca": "Moschino",
+        "nombre": "Toy Boy.jpg",
+        "img": "toyboy",
+        "presentacion": "100ml",
+        "precio": 49000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "34",
+        "marca": "Yves Saint Laurent",
+        "nombre": "Y Edp",
+        "img": "yedp.jpg",
+        "presentacion": "50ml",
+        "precio": 37000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "35",
+        "marca": "Yves Saint Laurent",
+        "nombre": "Y Edp.jpg",
+        "img": "yedp",
+        "presentacion": "100ml",
+        "precio": 48000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "36",
+        "marca": "Ralph Lauren",
+        "nombre": "Polo Red",
+        "img": "polored.jpg",
+        "presentacion": "50ml",
+        "precio": 31000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "37",
+        "marca": "Ralph Lauren",
+        "nombre": "Polo Red",
+        "img": "polored.jpg",
+        "presentacion": "125ml",
+        "precio": 45000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "38",
+        "marca": "Paco Rabanne",
+        "nombre": "UltraViolet",
+        "img": "ultraviolet.jpg",
+        "presentacion": "50ml",
+        "precio": 40000,
+        "cantidad": 0
+    },
+    {
+        "codigo": "39",
+        "marca": "Paco Rabanne",
+        "nombre": "UltraViolet",
+        "img": "ultraviolet.jpg",
+        "presentacion": "100ml",
+        "precio": 50000,
+        "cantidad": 0
+    }
+]

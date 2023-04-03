@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/jpg" href="/img/fragances.net.png"/>
+    <link rel="icon" type="image/jpg" href="/img/fragances.net.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Fragances.net</title>
 </head>
@@ -75,28 +76,36 @@
         <section class="container">
             <h2 class="tituloIndex">Nuestras Fragancias</h2>
             <div class="d-flex align-items-center gap-1">
-                <span>Diseñador:</span>
-                <select id="filtroMarca" class="form-select selector" aria-label="Default select example">
-                    <option value="" selected>Todos</option>
-                    <option value="Armaf">Armaf</option>
-                    <option value="Armani">Armani</option>
-                    <option value="Calvin klein">Calvin klein</option>
-                    <option value="Carolina Herrera">Carolina Herrera</option>
-                    <option value="Dior">Dior</option>
-                    <option value="Dolce & Gabbana">Dolce & Gabbana</option>
-                    <option value="Givenchy">Givenchy</option>
-                    <option value="Jean Paul Gaultier">Jean Paul Gaultier</option>
-                    <option value="Montblanc">Montblanc</option>
-                    <option value="Moschino">Moschino</option>
-                    <option value="Paco Rabanne">Paco Rabbane</option>
-                    <option value="Ralph Lauren">Ralph Lauren</option>
-                    <option value="Yves Saint Laurent">Yves Saint Laurent</option>
-                </select>
+                <div>
+                    <span>Diseñador:</span>
+                    <select id="filtroMarca" class="form-select selector" aria-label="Default select example">
+                        <option value="" selected>Todos</option>
+                        
+                    </select>
+                </div>
+                <div>
+                    <span>Presentacion:</span>
+                    <select id="idPresentacion" class="form-select selector" aria-label="Default select example">
+                        <option value="" selected>Todas</option>
+                        <option value="50ml">50ml</option>
+                        <option value="75ml">75ml</option>
+                        <option value="100ml">100ml</option>
+                        <option value="125ml">125ml</option>
+
+                    </select>
+                </div>
+                <div class="ordenarContain">
+                    <span>Ordenar por:</span>
+                    <select id="ordenPorPrecio" class="form-select selector" aria-label="Default select example">
+                        <option value="" selected>Todas</option>
+                        <option value="menor">Menor Precio</option>
+                        <option value="mayor">Mayor Precio</option>
+                    </select>
+                </div>
             </div>
         </section>
         <section class="container">
             <div id="verProductos" class="row justify-content-evenly"></div>
-            <div id="itemCompra" class="row justify-content-evenly "></div>
         </section>
         <!-- Modal -->
         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -132,17 +141,19 @@
                 </div>
             </div>
         </div>
-</main>
+    </main>
     <footer>
         <p class="">Diseño realizado por Luciano Espinosa. Todos los derechos reservados</p>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="data.js"></script>
+    <!-- <script src="data.js"></script> -->
     <script src="main.js"></script>
 
 </body>
+
 </html>

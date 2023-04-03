@@ -1,57 +1,132 @@
-let arrayFiltro = [...fragancias];
-const filtroPorMarca = document.getElementById('filtroMarca');
+let fragancias = [];
+let arrayFiltro = [];
+let arrayOrden = [];
+let arrayPresentacion = [];
 
-mostrarCarrito();
-mostrarProductos();
+fetch('productos.json')
+    .then(respuesta => respuesta.json())
+    .then(prodImport => {
 
-filtroPorMarca.addEventListener('change', () => {
-    if (filtroPorMarca.value) {
-        arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value);
-    } else {
+        fragancias = [...prodImport];
         arrayFiltro = [...fragancias];
-    }
-    mostrarProductos();
+        arrayPresentacion = [...arrayFiltro];
+        arrayOrden = [...arrayFiltro];
+
+        mostrarCarrito();
+        renderFiltroMarca(fragancias);
+        mostrarProductos(fragancias);
+    })
+    .catch(error => { swal({ title: "Error", text: "Error en la conxion con el servidor.", icon: "error", button: "Cerrar", }); });
+
+const filtroPorMarca = document.getElementById('filtroMarca');
+filtroPorMarca.addEventListener('change', () => {
+    filtroPorPresentacion.value = "";
+    ordenPorPrecio.value = "";
+    arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : [...fragancias];
+    arrayOrden = [...arrayFiltro]
+
+    // if (filtroPorMarca.value) {
+    //     arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value);
+    //     arrayOrden = [...arrayFiltro]
+    // } else {
+    //     arrayFiltro = [...fragancias];
+    // }
+    mostrarProductos(arrayFiltro);
+    console.log(arrayFiltro);
 });
 
-function mostrarProductos() {
-    let tarjetas = document.getElementById("verProductos");
+const filtroPorPresentacion = document.getElementById("idPresentacion");
+filtroPorPresentacion.addEventListener('change', () => {
+    let mensaje = document.getElementById("verProductos");
+    ordenPorPrecio.value = "";
+    arrayPresentacion = filtroPorPresentacion.value ? arrayFiltro.filter(p => p.presentacion === filtroPorPresentacion.value) : [...arrayFiltro];
+    arrayOrden = [...arrayPresentacion];
+
+
+    // if (filtroPorPresentacion.value) {
+    //     arrayPresentacion = arrayFiltro.filter(p => p.presentacion === filtroPorPresentacion.value);
+    //     arrayOrden=[...arrayPresentacion];
+    // } else {
+    //     arrayPresentacion = [...arrayFiltro];
+    // }
+    if (arrayPresentacion.length === 0) {
+        console.log("array vacio");
+        mensaje.innerHTML = `
+        <div class="cartelSinProductos">
+        <span>No hay productos en esa presentacion</span>
+        <span class="borrarFiltros" onclick="borrarFiltro()">Borrar Filtro</span>
+        </div>`
+    } else {
+        mostrarProductos(arrayPresentacion);
+        console.log(arrayPresentacion);
+    }
+});
+const ordenPorPrecio = document.getElementById("ordenPorPrecio");
+ordenPorPrecio.addEventListener("change", () => {
+    arrayOrden = ordenPorPrecio.value === "menor" ? arrayFiltro.sort((a, b) => a.precio - b.precio) : ordenPorPrecio.value === "mayor" ? arrayOrden.sort((a, b) => b.precio - a.precio) : [...arrayFiltro];
+    // switch (ordenPorPrecio.value) {
+    //     case "":
+    //         arrayOrden = [...arrayFiltro];
+    //         break
+    //     case "menor":
+    //         arrayOrden = arrayOrden.sort((a, b) => a.precio - b.precio);
+
+    //         break
+    //     case "mayor":
+    //         console.log("hola luchito");
+    //         arrayOrden = arrayOrden.sort((a, b) => b.precio - a.precio);
+
+    //         break
+    // }
+    mostrarProductos(arrayOrden);
+})
+function renderFiltroMarca(array) {
+    let marcas = [];
+    for (let item of array) {
+        marcas.indexOf(item.marca) === -1 && marcas.push(item.marca);
+    }
+    const filtroPorMarca = document.getElementById("filtroMarca")
+    for (let item in marcas) {
+        let optionItem = document.createElement('option');
+        optionItem.value = marcas[item];
+        optionItem.textContent = marcas[item];
+        filtroPorMarca.appendChild(optionItem);
+    }
+}
+function mostrarProductos(array) {
+    const tarjetas = document.getElementById("verProductos");
     tarjetas.innerHTML = "";
-    for (let item of arrayFiltro) {
+    for (let item of array) {
+        const { codigo, marca, nombre, img, presentacion, precio } = item;
         let botonComprar = item.codigo.concat("btnComprar");
-        let idH4 = ("precio" + item.nombre + item.presentacion).replace(' ', '');
+        let idH4 = ("precio" + nombre + presentacion).replace(' ', '');
 
         tarjetas.innerHTML += `
     
         <div class="d-flex flex-column align-items-center tarjeta">
-        <img src="./img/${item.img}.jpg" class="d-block w-50" alt="${item.nombre}">
+        <img src="./img/${img}" class="d-block w-50" alt="${nombre}">
         
-            <h2 class="card-title">${item.marca}</h2>
-            <h3 class="card-text">${item.nombre}</h3>
+            <h2 class="card-title">${marca}</h2>
+            <h3 class="card-text">${nombre}</h3>
             
             <div class="estiloPresentacion d-flex justify-content-center align-items-center">
-                <span>${item.presentacion}</span>
+                <span>${presentacion}</span>
             </div>
-            <h4 id="${idH4}" class="classPrecio">$${item.precio}</h4>
-            <button id="${botonComprar}" type="button" onclick="agregarAlCarrito(${item.codigo},true)" class="bontonComprar btn btn-primary border-0">Comprar</button>
+            <h4 id="${idH4}" class="classPrecio">$${precio}</h4>
+            <button id="${botonComprar}" type="button" onclick="agregarAlCarrito(${codigo},true)" class="bontonComprar btn btn-primary border-0">Comprar</button>
             `
     }
 }
 function agregarAlCarrito(codigoPerfume, popUp) {
-    if (popUp) {
-        swal({
-            title: "Felicitaciones!",
-            text: "El Producto fue agregado al carrito.",
-            icon: "success",
-            button: "Seguir comprando",
-        });
+    popUp && swal({ title: "Felicitaciones!", text: "El Producto fue agregado al carrito.", icon: "success", button: "Seguir comprando", })
 
-    }
     let existe = false;
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     for (let item of fragancias) {
         if (item.codigo == codigoPerfume) {
             existe = carrito.some(busca => busca.codigo == codigoPerfume);
             if (existe) {
+                Toastify({ text: "Producto Agregado", duration: 1000, style: { background: "#0d6efd" } }).showToast();
                 const productos = carrito.map(producto => {
                     if (producto.codigo === item.codigo) {
                         let cantidad = parseInt(producto.cantidad) + 1;
@@ -61,10 +136,11 @@ function agregarAlCarrito(codigoPerfume, popUp) {
                         return producto;
                     }
                 });
-                carrito = productos.slice();
+                carrito = [...productos];
             } else {
                 item.cantidad = 1;
-                carrito.push(item);
+                // carrito.push(item);
+                carrito = [...carrito, item]
             }
         }
     }
@@ -74,22 +150,20 @@ function agregarAlCarrito(codigoPerfume, popUp) {
     mostrarCarrito()
 }
 function vaciarCarrito() {
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     carrito = [];
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
     cantidadDeProductos()
     mostrarCarrito();
 }
 function eliminarProductosDeCarrito(codigoPerfume) {
-    console.log(codigoPerfume);
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     for (let i = 0; i < carrito.length; i++) {
-        if (carrito[i].codigo == codigoPerfume) {
-            console.log(carrito[i].codigo);
-            carrito.splice(i, 1);
+        carrito[i].codigo == codigoPerfume && carrito.splice(i, 1);
 
-            break;
-        }
+        // if (carrito[i].codigo == codigoPerfume) {
+        //     carrito.splice(i, 1);
+        // }
     }
 
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
@@ -97,14 +171,13 @@ function eliminarProductosDeCarrito(codigoPerfume) {
     mostrarCarrito();
 }
 function restarUnidades(codigoPerfume) {
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     for (let i = 0; i < carrito.length; i++) {
         if (carrito[i].codigo == codigoPerfume) {
             carrito[i].cantidad = carrito[i].cantidad - 1;
             if (carrito[i].cantidad < 1) {
                 carrito.splice(i, 1);
             }
-            break;
         }
     }
 
@@ -118,25 +191,25 @@ function mostrarCarrito() {
     let itemDecompra = document.getElementById("itemCompra");
     itemDecompra.innerHTML = "";
     for (let item of carrito) {
-
+        const { codigo, marca, nombre, img, presentacion, precio, cantidad } = item;
         itemDecompra.innerHTML += `
-        <div id="div${item.codigo}" class="d-flex itemCarrito justify-content-evenly align-items-center">
-        <img src="../img/${item.img}.jpg" class="imgCarrito" alt="">
+        <div id="div${codigo}" class="d-flex itemCarrito justify-content-evenly align-items-center">
+        <img src="../img/${img}" class="imgCarrito" alt="">
 
 
         <div class="d-flex flex-column align-items-center justify-content-center itemCarrito_nombre ">
-            <span>${item.marca}</span>
-            <span class="text-center">${item.nombre} ${item.presentacion}</span>
+            <span>${marca}</span>
+            <span class="text-center">${nombre} ${presentacion}</span>
         </div>
         <div class="itemCarrito_unidades d-flex">
-            <i class="bi bi-cart-dash-fill icon" id="restar${item.codigo}" onclick="restarUnidades(${item.codigo})"></i>
-            <input id="cantidad${item.codigo}" type="text" class="itemCarrito_cantidad" value="${item.cantidad}">
-            <i class="bi bi-cart-plus-fill icon" id="sumar${item.codigo}" onclick="agregarAlCarrito(${item.codigo})"></i>
+            <i class="bi bi-cart-dash-fill iconCant" id="restar${codigo}" onclick="restarUnidades(${codigo})"></i>
+            <span id="cantidad${codigo}"  class="itemCarrito_cantidad">${cantidad}</span>
+            <i class="bi bi-cart-plus-fill iconCant" id="sumar${codigo}" onclick="agregarAlCarrito(${codigo})"></i>
         </div>
 
-        <span class="itemCarrito_precio">$${item.precio * item.cantidad}</span>
-        <i id="eliminar${item.codigo}" onclick="eliminarProductosDeCarrito(${item.codigo})"
-            class="bi bi-trash3-fill icon"></i>
+        <span class="itemCarrito_precio">$${precio * cantidad}</span>
+        <i id="eliminar${codigo}" onclick="eliminarProductosDeCarrito(${codigo})"
+            class="bi bi-trash3-fill iconTrash"></i>
     </div>`
         MontoTotal();
         cantidadDeProductos();
@@ -160,19 +233,19 @@ function mostrarCarrito() {
             <span>Total</span>
         </div>
         <div class="itemCarrito_unidades d-flex justify-content-center">
-            <input type="text" class="itemCarrito_cantidad" value="${cantidad}">
+            <span class="itemCarrito_cantidad">${cantidad}</span>
         </div>
 
         <span class="itemCarrito_precio">$${precio}</span>
         <i  onclick="vaciarCarrito()"
-            class="bi bi-trash3-fill icon"></i>
+            class="bi bi-trash3-fill iconTrash"></i>
     </div>
     <span class="text-end d-block text-white"><button onclick="finalizarCompra()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button></span>
     `
     }
 }
 function MontoTotal() {
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     let precio = carrito.reduce((total, i) => total + i.precio * i.cantidad, 0);
     localStorage.setItem("precioTotal", (precio));
 }
@@ -182,7 +255,7 @@ function cantidadDeProductos() {
     localStorage.setItem("cantidadProductos", (cantidad));
 }
 function finalizarCompra() {
-    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     let tb = document.getElementById('tablaCarrito');
 
     tb.innerHTML = ""
@@ -202,4 +275,15 @@ function finalizarCompra() {
     suma.innerHTML = "$" + total;
     vaciarCarrito();
 
+}
+function borrarFiltro() {
+    filtroPorPresentacion.value = "";
+
+    console.log("este es arrayFiltro");
+    console.log(arrayFiltro);
+    console.log("este es arrayPresentacion");
+    console.log(arrayPresentacion);
+    console.log("este es arrayOrden");
+    console.log(arrayOrden);
+    mostrarProductos(arrayFiltro);
 }

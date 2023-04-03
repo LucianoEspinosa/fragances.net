@@ -40,9 +40,11 @@ h6 {
     line-height: normal;
     cursor: default;
 }
-span{
+
+span {
     cursor: default;
 }
+
 button,
 input,
 optgroup,
@@ -73,6 +75,11 @@ body {
     min-height: 710px;
 }
 
+@media(min-width:576px) {
+    .fondo {
+        min-height: 1000px;
+    }
+}
 .tarjeta {
     width: 200px;
     overflow: hidden;
@@ -94,14 +101,16 @@ body {
     width: 70px;
     padding-top: 6px;
 }
-.estiloPresentacion{
+
+.estiloPresentacion {
     background-color: rgb(238, 238, 238);
     border-radius: 50%;
     display: flex;
     width: 48px;
     height: 48px;
     color: black;
-    }
+}
+
 .changuito {
     background-color: #F2C2B8;
     border-radius: 50%;
@@ -146,9 +155,17 @@ body {
 .itemCarrito_unidades {
     width: 90px;
 }
-.icon{
+
+.iconCant {
     cursor: pointer;
+    color: rgb(108, 195, 108);
 }
+
+.iconTrash {
+    cursor: pointer;
+    color: rgba(113, 9, 9, 0.92);
+}
+
 .itemCarrito_cantidad {
     width: 50px;
     border-top: none;
@@ -157,7 +174,7 @@ body {
     border-bottom: solid black 2px;
     text-align: center;
     font-size: 1rem;
-    cursor:default;
+    cursor: default;
 }
 
 .imgCarrito {
@@ -312,17 +329,38 @@ span {
 .mX {
     width: 25%;
 }
+
 .swal-button {
-    background-color:#0d6efd;
+    background-color: #0d6efd;
     outline: none;
     font-size: 1rem;
-    padding: 16px,12px;
+    padding: 16px, 12px;
     font-family: 'League Spartan', sans-serif;
     font-weight: 400;
 }
 
-.swal-button:hover{
-    background-color:#0b5ed7 !important ;
+.swal-button:hover {
+    background-color: #0b5ed7 !important;
 }
 
+.cartelSinProductos {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.borrarFiltros {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ordenarContain {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 90%;
+}
