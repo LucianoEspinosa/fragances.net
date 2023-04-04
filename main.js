@@ -22,6 +22,7 @@ filtroPorMarca.addEventListener('change', () => {
     filtroPorPresentacion.value = "";
     ordenPorPrecio.value = "";
     arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : [...fragancias];
+    arrayPresentacion=[...arrayFiltro];
     arrayOrden = [...arrayFiltro]
     mostrarProductos(arrayFiltro);
     renderFiltropresentacion(arrayFiltro)
@@ -38,7 +39,7 @@ filtroPorPresentacion.addEventListener('change', () => {
 });
 const ordenPorPrecio = document.getElementById("ordenPorPrecio");
 ordenPorPrecio.addEventListener("change", () => {
-    arrayOrden = ordenPorPrecio.value === "menor" ? arrayFiltro.sort((a, b) => a.precio - b.precio) : ordenPorPrecio.value === "mayor" ? arrayOrden.sort((a, b) => b.precio - a.precio) : [...arrayFiltro];
+    arrayOrden = ordenPorPrecio.value === "menor" ? arrayPresentacion.sort((a, b) => a.precio - b.precio) : ordenPorPrecio.value === "mayor" ? arrayOrden.sort((a, b) => b.precio - a.precio) : [...arrayFiltro];
     mostrarProductos(arrayOrden);
 })
 function renderFiltroMarca(array) {
