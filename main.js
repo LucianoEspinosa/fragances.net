@@ -6,14 +6,13 @@ let arrayPresentacion = [];
 fetch('productos.json')
     .then(respuesta => respuesta.json())
     .then(prodImport => {
-
         fragancias = [...prodImport];
         arrayFiltro = [...fragancias];
         arrayPresentacion = [...arrayFiltro];
         arrayOrden = [...arrayFiltro];
-
         mostrarCarrito();
         renderFiltroMarca(fragancias);
+        document.addEventListener("DOMContentLoaded", renderFiltropresentacion(fragancias));
         mostrarProductos(fragancias);
     })
     .catch(error => { swal({ title: "Error", text: "Error en la conxion con el servidor.", icon: "error", button: "Cerrar", }); });
@@ -24,60 +23,22 @@ filtroPorMarca.addEventListener('change', () => {
     ordenPorPrecio.value = "";
     arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : [...fragancias];
     arrayOrden = [...arrayFiltro]
-
-    // if (filtroPorMarca.value) {
-    //     arrayFiltro = fragancias.filter(p => p.marca === filtroPorMarca.value);
-    //     arrayOrden = [...arrayFiltro]
-    // } else {
-    //     arrayFiltro = [...fragancias];
-    // }
     mostrarProductos(arrayFiltro);
+    renderFiltropresentacion(arrayFiltro)
     console.log(arrayFiltro);
 });
 
 const filtroPorPresentacion = document.getElementById("idPresentacion");
 filtroPorPresentacion.addEventListener('change', () => {
-    let mensaje = document.getElementById("verProductos");
     ordenPorPrecio.value = "";
     arrayPresentacion = filtroPorPresentacion.value ? arrayFiltro.filter(p => p.presentacion === filtroPorPresentacion.value) : [...arrayFiltro];
     arrayOrden = [...arrayPresentacion];
-
-
-    // if (filtroPorPresentacion.value) {
-    //     arrayPresentacion = arrayFiltro.filter(p => p.presentacion === filtroPorPresentacion.value);
-    //     arrayOrden=[...arrayPresentacion];
-    // } else {
-    //     arrayPresentacion = [...arrayFiltro];
-    // }
-    if (arrayPresentacion.length === 0) {
-        console.log("array vacio");
-        mensaje.innerHTML = `
-        <div class="cartelSinProductos">
-        <span>No hay productos en esa presentacion</span>
-        <span class="borrarFiltros" onclick="borrarFiltro()">Borrar Filtro</span>
-        </div>`
-    } else {
-        mostrarProductos(arrayPresentacion);
-        console.log(arrayPresentacion);
-    }
+    mostrarProductos(arrayPresentacion);
+    console.log(arrayPresentacion);
 });
 const ordenPorPrecio = document.getElementById("ordenPorPrecio");
 ordenPorPrecio.addEventListener("change", () => {
     arrayOrden = ordenPorPrecio.value === "menor" ? arrayFiltro.sort((a, b) => a.precio - b.precio) : ordenPorPrecio.value === "mayor" ? arrayOrden.sort((a, b) => b.precio - a.precio) : [...arrayFiltro];
-    // switch (ordenPorPrecio.value) {
-    //     case "":
-    //         arrayOrden = [...arrayFiltro];
-    //         break
-    //     case "menor":
-    //         arrayOrden = arrayOrden.sort((a, b) => a.precio - b.precio);
-
-    //         break
-    //     case "mayor":
-    //         console.log("hola luchito");
-    //         arrayOrden = arrayOrden.sort((a, b) => b.precio - a.precio);
-
-    //         break
-    // }
     mostrarProductos(arrayOrden);
 })
 function renderFiltroMarca(array) {
@@ -85,12 +46,28 @@ function renderFiltroMarca(array) {
     for (let item of array) {
         marcas.indexOf(item.marca) === -1 && marcas.push(item.marca);
     }
+    marcas.sort();
     const filtroPorMarca = document.getElementById("filtroMarca")
     for (let item in marcas) {
         let optionItem = document.createElement('option');
         optionItem.value = marcas[item];
         optionItem.textContent = marcas[item];
         filtroPorMarca.appendChild(optionItem);
+    }
+}
+function renderFiltropresentacion(array) {
+    let ml = [];
+    for (let item of array) {
+        ml.indexOf(item.presentacion) === -1 && ml.push(item.presentacion);
+    }
+    ml.sort((a, b) => parseInt(a) - parseInt(b));
+    const filtroPorPresentacion = document.getElementById("idPresentacion")
+    filtroPorPresentacion.innerHTML = `<option value="" selected>Todas</option>`;
+    for (let item in ml) {
+        let optionItem = document.createElement('option');
+        optionItem.value = ml[item];
+        optionItem.textContent = ml[item];
+        filtroPorPresentacion.appendChild(optionItem);
     }
 }
 function mostrarProductos(array) {
@@ -117,6 +94,7 @@ function mostrarProductos(array) {
             `
     }
 }
+
 function agregarAlCarrito(codigoPerfume, popUp) {
     popUp && swal({ title: "Felicitaciones!", text: "El Producto fue agregado al carrito.", icon: "success", button: "Seguir comprando", })
 
@@ -139,7 +117,6 @@ function agregarAlCarrito(codigoPerfume, popUp) {
                 carrito = [...productos];
             } else {
                 item.cantidad = 1;
-                // carrito.push(item);
                 carrito = [...carrito, item]
             }
         }
@@ -160,12 +137,7 @@ function eliminarProductosDeCarrito(codigoPerfume) {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     for (let i = 0; i < carrito.length; i++) {
         carrito[i].codigo == codigoPerfume && carrito.splice(i, 1);
-
-        // if (carrito[i].codigo == codigoPerfume) {
-        //     carrito.splice(i, 1);
-        // }
     }
-
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
     cantidadDeProductos()
     mostrarCarrito();
@@ -274,16 +246,4 @@ function finalizarCompra() {
     let suma = document.getElementById("tablaTotal");
     suma.innerHTML = "$" + total;
     vaciarCarrito();
-
-}
-function borrarFiltro() {
-    filtroPorPresentacion.value = "";
-
-    console.log("este es arrayFiltro");
-    console.log(arrayFiltro);
-    console.log("este es arrayPresentacion");
-    console.log(arrayPresentacion);
-    console.log("este es arrayOrden");
-    console.log(arrayOrden);
-    mostrarProductos(arrayFiltro);
 }

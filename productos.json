@@ -4,8 +4,8 @@
         "marca": "Dior",
         "nombre": "Homme Intense",
         "img": "dior homme intense.jpg",
-        "presentacion": "100ml",
-        "precio": 45000,
+        "presentacion": "50ml",
+        "precio": 33000,
         "cantidad": 0
     },
     {
@@ -13,8 +13,8 @@
         "marca": "Dior",
         "nombre": "Homme Intense",
         "img": "dior homme intense.jpg",
-        "presentacion": "50ml",
-        "precio": 33000,
+        "presentacion": "100ml",
+        "precio": 45000,
         "cantidad": 0
     },
     {
