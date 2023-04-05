@@ -22,11 +22,10 @@ filtroPorMarca.addEventListener('change', () => {
     filtroPorPresentacion.value = "";
     ordenPorPrecio.value = "";
     arrayFiltro = filtroPorMarca.value ? fragancias.filter(p => p.marca === filtroPorMarca.value) : [...fragancias];
-    arrayPresentacion=[...arrayFiltro];
-    arrayOrden = [...arrayFiltro]
+    arrayPresentacion = [...arrayFiltro];
+    arrayOrden = [...arrayFiltro];
     mostrarProductos(arrayFiltro);
-    renderFiltropresentacion(arrayFiltro)
-    console.log(arrayFiltro);
+    renderFiltropresentacion(arrayFiltro);
 });
 
 const filtroPorPresentacion = document.getElementById("idPresentacion");
@@ -35,7 +34,6 @@ filtroPorPresentacion.addEventListener('change', () => {
     arrayPresentacion = filtroPorPresentacion.value ? arrayFiltro.filter(p => p.presentacion === filtroPorPresentacion.value) : [...arrayFiltro];
     arrayOrden = [...arrayPresentacion];
     mostrarProductos(arrayPresentacion);
-    console.log(arrayPresentacion);
 });
 const ordenPorPrecio = document.getElementById("ordenPorPrecio");
 ordenPorPrecio.addEventListener("change", () => {
@@ -48,7 +46,7 @@ function renderFiltroMarca(array) {
         marcas.indexOf(item.marca) === -1 && marcas.push(item.marca);
     }
     marcas.sort();
-    const filtroPorMarca = document.getElementById("filtroMarca")
+    const filtroPorMarca = document.getElementById("filtroMarca");
     for (let item in marcas) {
         let optionItem = document.createElement('option');
         optionItem.value = marcas[item];
@@ -62,7 +60,7 @@ function renderFiltropresentacion(array) {
         ml.indexOf(item.presentacion) === -1 && ml.push(item.presentacion);
     }
     ml.sort((a, b) => parseInt(a) - parseInt(b));
-    const filtroPorPresentacion = document.getElementById("idPresentacion")
+    const filtroPorPresentacion = document.getElementById("idPresentacion");
     filtroPorPresentacion.innerHTML = `<option value="" selected>Todas</option>`;
     for (let item in ml) {
         let optionItem = document.createElement('option');
@@ -76,9 +74,6 @@ function mostrarProductos(array) {
     tarjetas.innerHTML = "";
     for (let item of array) {
         const { codigo, marca, nombre, img, presentacion, precio } = item;
-        let botonComprar = item.codigo.concat("btnComprar");
-        let idH4 = ("precio" + nombre + presentacion).replace(' ', '');
-
         tarjetas.innerHTML += `
     
         <div class="d-flex flex-column align-items-center tarjeta">
@@ -90,22 +85,21 @@ function mostrarProductos(array) {
             <div class="estiloPresentacion d-flex justify-content-center align-items-center">
                 <span>${presentacion}</span>
             </div>
-            <h4 id="${idH4}" class="classPrecio">$${precio}</h4>
-            <button id="${botonComprar}" type="button" onclick="agregarAlCarrito(${codigo},true)" class="bontonComprar btn btn-primary border-0">Comprar</button>
+            <h4 class="classPrecio">$${precio}</h4>
+            <button type="button" onclick="agregarAlCarrito(${codigo},true)" class="bontonComprar btn btn-primary border-0">Comprar</button>
             `
     }
 }
 
 function agregarAlCarrito(codigoPerfume, popUp) {
-    popUp && swal({ title: "Felicitaciones!", text: "El Producto fue agregado al carrito.", icon: "success", button: "Seguir comprando", })
-
+    popUp && swal({ title: "Felicitaciones!", text: "El Producto fue agregado al carrito.", icon: "success", button: "Seguir comprando", });
     let existe = false;
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
     for (let item of fragancias) {
         if (item.codigo == codigoPerfume) {
             existe = carrito.some(busca => busca.codigo == codigoPerfume);
             if (existe) {
-                Toastify({ text: "Producto Agregado", duration: 1000, style: { background: "#0d6efd" } }).showToast();
+                Toastify({ text: "Producto Agregado", duration: 500, style: { background: "#0d6efd" } }).showToast();
                 const productos = carrito.map(producto => {
                     if (producto.codigo === item.codigo) {
                         let cantidad = parseInt(producto.cantidad) + 1;
@@ -118,20 +112,19 @@ function agregarAlCarrito(codigoPerfume, popUp) {
                 carrito = [...productos];
             } else {
                 item.cantidad = 1;
-                carrito = [...carrito, item]
+                carrito = [...carrito, item];
             }
         }
     }
-
-    localStorage.setItem("carritoDeCompras", JSON.stringify(carrito))
-
-    mostrarCarrito()
+    localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
+    mostrarCarrito();
 }
 function vaciarCarrito() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     carrito = [];
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
-    cantidadDeProductos()
+    cantidadDeProductos();
+    MontoTotal();
     mostrarCarrito();
 }
 function eliminarProductosDeCarrito(codigoPerfume) {
@@ -140,7 +133,7 @@ function eliminarProductosDeCarrito(codigoPerfume) {
         carrito[i].codigo == codigoPerfume && carrito.splice(i, 1);
     }
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
-    cantidadDeProductos()
+    cantidadDeProductos();
     mostrarCarrito();
 }
 function restarUnidades(codigoPerfume) {
@@ -153,14 +146,13 @@ function restarUnidades(codigoPerfume) {
             }
         }
     }
-
     localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
-    cantidadDeProductos()
+    cantidadDeProductos();
+    MontoTotal();
     mostrarCarrito();
 }
 function mostrarCarrito() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
-
     let itemDecompra = document.getElementById("itemCompra");
     itemDecompra.innerHTML = "";
     for (let item of carrito) {
@@ -186,7 +178,6 @@ function mostrarCarrito() {
     </div>`
         MontoTotal();
         cantidadDeProductos();
-
     }
     let precio = localStorage.getItem("precioTotal");
     let cantidad = localStorage.getItem("cantidadProductos");
@@ -230,20 +221,19 @@ function cantidadDeProductos() {
 function finalizarCompra() {
     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras'));
     let tb = document.getElementById('tablaCarrito');
-
     tb.innerHTML = ""
     for (let item of carrito) {
-
+        const {marca, nombre,cantidad, presentacion, precio } = item;
         tb.innerHTML += `
-    <tr>
-    <td scope="row">${item.marca}</td>
-    <td >${item.nombre}</td>
-    <td >${item.presentacion}</td>
-    <td >${item.cantidad}</td>
-    <td >$${item.cantidad * item.precio}</td>
-    </tr>`
+            <tr>
+            <td scope="row">${marca}</td>
+            <td >${nombre}</td>
+            <td >${presentacion}</td>
+            <td >${cantidad}</td>
+            <td >$${cantidad * precio}</td>
+            </tr>`
     }
-    let total = localStorage.getItem("precioTotal")
+    let total = localStorage.getItem("precioTotal");
     let suma = document.getElementById("tablaTotal");
     suma.innerHTML = "$" + total;
     vaciarCarrito();
