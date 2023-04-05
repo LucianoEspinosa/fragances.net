@@ -223,7 +223,7 @@ function finalizarCompra() {
     let tb = document.getElementById('tablaCarrito');
     tb.innerHTML = ""
     for (let item of carrito) {
-        const {marca, nombre,cantidad, presentacion, precio } = item;
+        const { marca, nombre, cantidad, presentacion, precio } = item;
         tb.innerHTML += `
             <tr>
             <td scope="row">${marca}</td>
