@@ -86,7 +86,7 @@
         "nombre": "Homme Cologne",
         "img": "cologne.jpg",
         "presentacion": "50ml",
-        "precio": 32000,
+        "precio": 31000,
         "cantidad": 0
     },
     {
@@ -95,7 +95,7 @@
         "nombre": "Homme Cologne",
         "img": "cologne.jpg",
         "presentacion": "100ml",
-        "precio": 43000,
+        "precio": 41000,
         "cantidad": 0
     },
     {
@@ -248,7 +248,7 @@
         "nombre": "Sauvage Edp",
         "img": "sauvageedp.jpg",
         "presentacion": "100ml",
-        "precio": 45000,
+        "precio": 44000,
         "cantidad": 0
     },
     {

@@ -39,7 +39,7 @@ filtroPorPresentacion.addEventListener('change', () => {
 });
 const ordenPorPrecio = document.getElementById("ordenPorPrecio");
 ordenPorPrecio.addEventListener("change", () => {
-    arrayOrden = ordenPorPrecio.value === "menor" ? arrayPresentacion.sort((a, b) => a.precio - b.precio) : ordenPorPrecio.value === "mayor" ? arrayOrden.sort((a, b) => b.precio - a.precio) : [...arrayFiltro];
+    arrayOrden = ordenPorPrecio.value === "menor" ? arrayOrden.sort((a, b) => a.precio - b.precio) : ordenPorPrecio.value === "mayor" ? arrayOrden.sort((a, b) => b.precio - a.precio) : [...arrayPresentacion];
     mostrarProductos(arrayOrden);
 })
 function renderFiltroMarca(array) {
