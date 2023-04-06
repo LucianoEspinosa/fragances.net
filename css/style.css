@@ -122,6 +122,9 @@ body {
     text-align: center;
     font-size: 0.9rem;
     padding: 4px;
+    transform: translateX(-19px);
+    position: absolute;
+    cursor: inherit
 }
 
 .itemCarrito {
@@ -373,4 +376,16 @@ span {
 .borrarFiltros {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.alertaProductos {
+    color: white;
+    margin-left: auto;
+    font-weight: 600;
+}
+
+@media(min-width:768px) {
+    .alertaProductos {
+        display: block !important;
+    }
 }

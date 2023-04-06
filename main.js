@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", alerta());
+
 let fragancias = [];
 let arrayFiltro = [];
 let arrayOrden = [];
@@ -237,4 +239,11 @@ function finalizarCompra() {
     let suma = document.getElementById("tablaTotal");
     suma.innerHTML = "$" + total;
     vaciarCarrito();
+}
+function alerta() {
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+    let alerta = document.getElementById("alertProductos");
+    alerta.innerText = "Todavia hay productos en el carrito";
+    carrito.length > 0 && alerta.classList.add('alertaProductos');
+    setTimeout(() => { alerta.remove('alertaProductos'); }, 5000);
 }
